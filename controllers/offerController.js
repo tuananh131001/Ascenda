@@ -4,8 +4,8 @@ import Offer from "../models/Offer.js";
 
 export const getNearByOffers = async (req, res) => {
   try {
+    // check validate post request
     const errors = validationResult(req);
-
     // if there is error then return Error
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -13,21 +13,26 @@ export const getNearByOffers = async (req, res) => {
         errors: errors.array(),
       });
     }
-
-    const response = await fetch(req.body.api);
-
-    const data = await response.json();
-    try {
-      const value = await Offer.validateAsync(data);
-    } catch (err) {
-      return res.status(500).json({ message: err.message });
-    }
-
-    const processedData = processOffers(data, req.body.checkInDate);
+    let data = await getDataAPI(req, res);
+    let processedData = processOffers(data, req.body.checkInDate);
     return res.status(200).json(processedData);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
+};
+
+const getDataAPI = async (req, res) => {
+  const response = await fetch(req.body.api);
+  const data = await response.json();
+  if (!data) {
+    throw new Error("No data found");
+  }
+  try {
+    await Offer.validateAsync(data);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+  return data;
 };
 
 //Only select category Resturant , Retail & Activity offers.
