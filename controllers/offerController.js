@@ -1,23 +1,36 @@
+import { validationResult } from "express-validator";
 import moment from "moment/moment.js";
+import Offer from "../models/Offer.js";
 
 export const getNearByOffers = async (req, res) => {
   try {
+    const errors = validationResult(req);
+
+    // if there is error then return Error
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
+    }
+
     const response = await fetch(req.body.api);
+
     const data = await response.json();
+    try {
+      const value = await Offer.validateAsync(data);
+    } catch (err) {
+      return res.status(500).json({ message: err.message });
+    }
+
     const processedData = processOffers(data, req.body.checkInDate);
     return res.status(200).json(processedData);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
 };
+
 //Only select category Resturant , Retail & Activity offers.
-
-// Category id mapping is
-
-// Resturant - 1
-// Retail - 2
-// Hotel - 3
-// Activity - 4
 const processOffers = (data, checkInDate) => {
   const offers = data?.offers;
   let processedData = filterCategory(offers);
