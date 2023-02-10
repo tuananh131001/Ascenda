@@ -1,5 +1,6 @@
-import express from "express";
-import offerRouter from "./routes/offerRouter.js";
+
+const express = require("express");
+const offerRouter = require("./routes/offerRouter.js");
 const app = express();
 const port = 3000;
 

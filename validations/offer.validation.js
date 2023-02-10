@@ -15,4 +15,4 @@ const requestDataValidate = {
   },
 };
 
-export default requestDataValidate;
+module.exports = requestDataValidate;

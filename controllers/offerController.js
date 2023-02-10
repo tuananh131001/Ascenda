@@ -1,8 +1,8 @@
-import { validationResult } from "express-validator";
-import moment from "moment/moment.js";
-import Offer from "../models/Offer.js";
+const Offer = require("../models/Offer");
+const { validationResult } = require("express-validator");
+const moment = require("moment");
 
-export const getNearByOffers = async (req, res) => {
+const getNearByOffers = async (req, res) => {
   try {
     // check validate post request
     const errors = validationResult(req);
@@ -15,12 +15,15 @@ export const getNearByOffers = async (req, res) => {
     }
     let data = await getDataAPI(req, res);
     let processedData = processOffers(data, req.body.checkInDate);
-    return res.status(200).json(processedData);
+    res.status(200);
+    return res.json(processedData);
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    res.status(500)
+    return res.json({ message: err.message });
   }
 };
 
+// Get Data from API
 const getDataAPI = async (req, res) => {
   const response = await fetch(req.body.api);
   const data = await response.json();
@@ -30,7 +33,7 @@ const getDataAPI = async (req, res) => {
   try {
     await Offer.validateAsync(data);
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    throw new Error(err);
   }
   return data;
 };
@@ -94,4 +97,9 @@ const filterLast2OffersDifferentCategory = (data) => {
     }
   }
   return selectedOffers;
+};
+
+module.exports = {
+  getNearByOffers,
+  getDataAPI,
 };

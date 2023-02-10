@@ -1,4 +1,4 @@
-import Joi from "joi";
+const Joi = require('joi');
 const Offer = Joi.object({
   offers: Joi.array()
     .items(
@@ -21,4 +21,5 @@ const Offer = Joi.object({
     )
     .required(),
 });
-export default Offer;
+
+module.exports = Offer;
