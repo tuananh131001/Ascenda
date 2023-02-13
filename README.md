@@ -2,6 +2,7 @@
 
 # Pre-requisites
 - Git
+- Postman
 - PC/Mac/Laptop
 - Node.js
 - NPM
@@ -15,13 +16,13 @@
 - Use 'Git Bash' (dont use powershell/cmd) to run the following commands
 - Run `npm i` to install the dependencies
 - Run `npm start` to start the server
-
+- Use Postman to test the API
 ## Mac
 - Clone the repository
 - "cd" into the repository
 - Run `npm i` to install the dependencies
 - Run `npm start` to start the server
-
+- Use Postman to test the API
 # API
 ## Get offers nearby
 GET localhost:3000/api/offer 
