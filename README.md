@@ -23,6 +23,11 @@
 - Run `npm i` to install the dependencies
 - Run `npm start` to start the server
 - Use Postman to test the API
+
+example:
+![image](https://user-images.githubusercontent.com/67695658/218424794-7d872ccf-2aec-4961-8f95-62258665eb87.png)
+
+
 # API
 ## Get offers nearby
 GET localhost:3000/api/offer 
