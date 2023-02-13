@@ -47,16 +47,16 @@ example:
 - Run `npm test` to run the unit tests
 ### Unit Testing Result
 
- PASS  __test__/controllers/closestMerchant.test.js     
- PASS  __test__/controllers/filterDate.test.js
- PASS  __test__/controllers/category.test.js
- PASS  __test__/controllers/closestDifferentCate.test.js
- PASS  __test__/controllers/offer.test.js
-Test Suites: 5 passed, 5 total
-Tests:       8 passed, 8 total
-Snapshots:   0 total
-Time:        3.129 s
-Ran all test suites.
+ PASS  __test__/controllers/closestMerchant.test.js            
+ PASS  __test__/controllers/filterDate.test.js      
+ PASS  __test__/controllers/category.test.js    
+ PASS  __test__/controllers/closestDifferentCate.test.js    
+ PASS  __test__/controllers/offer.test.js              
+Test Suites: 5 passed, 5 total              
+Tests:       8 passed, 8 total        
+Snapshots:   0 total        
+Time:        3.129 s        
+Ran all test suites.        
 ### Coverage Result
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
@@ -72,13 +72,13 @@ All files             |   96.19 |     92.3 |     100 |   96.19 |
   offer.validation.js |     100 |      100 |     100 |     100 | 
 ----------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 5 passed, 5 total
-Tests:       8 passed, 8 total
-Snapshots:   0 total
-Time:        3.329 s
-Ran all test suites.
+Test Suites: 5 passed, 5 total      
+Tests:       8 passed, 8 total  
+Snapshots:   0 total    
+Time:        3.329 s    
+Ran all test suites.    
 
-> express-validator is thoroughly tested , no need unit test for it
+> express-validator is thoroughly tested , no need unit test for it 
 
 # Author
 - Name: Nguyen Tuan Anh
