@@ -102,4 +102,8 @@ const filterLast2OffersDifferentCategory = (data) => {
 module.exports = {
   getNearByOffers,
   getDataAPI,
+  filterCategory,
+  filterValidDate,
+  filterClosestMerchant,
+  filterLast2OffersDifferentCategory,
 };

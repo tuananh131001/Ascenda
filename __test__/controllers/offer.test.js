@@ -1,6 +1,8 @@
-const { getNearByOffers } = require("../../controllers/offerController.js");
+const { getNearByOffers, filterCategory } = require("../../controllers/offerController.js");
 const successResponse = require("./mockReponseCase.js");
 const Offer = require("../../models/Offer.js");
+const { checkSchema } = require("express-validator");
+const requestDataValidate = require("../../validations/offer.validation.js");
 // perfect case request
 const request = {
   body: {
@@ -8,7 +10,13 @@ const request = {
     checkInDate: "2019-12-25",
   },
 };
-
+// missing field case request
+const missingFieldRequest = {
+  body: {
+    api: "https://api.npoint.io/5430a4a7d4a7bcf332a7",
+    checkInDate: "2019-12-25",
+  },
+};
 //fake reponse status with jest
 const reponse = {
   status: jest.fn((x) => x),
@@ -24,3 +32,14 @@ it("Should return the data have been filtered when get nearby offers", async () 
   const data = await getNearByOffers(request, reponse);
   expect(data).toEqual(successResponse);
 });
+// return the data have been filtered
+it("Should return the data have been filtered when get nearby offers", async () => {
+  const data = await getNearByOffers(request, reponse);
+  expect(data).toEqual(successResponse);
+});
+// return 500 when API missing field
+it("Should return 500 when API missing field", async () => {
+  await getNearByOffers(missingFieldRequest, reponse);
+  expect(reponse.status).toHaveBeenCalledWith(500);
+});
+
