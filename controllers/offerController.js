@@ -2,9 +2,9 @@ const Offer = require("../models/Offer");
 const { validationResult } = require("express-validator");
 const moment = require("moment");
 
+// main function to get nearby offers
 const getNearByOffers = async (req, res) => {
   try {
-    // check validate post request
     const errors = validationResult(req);
     // if there is error then return Error
     if (!errors.isEmpty()) {
