@@ -1,4 +1,5 @@
 const Joi = require('joi');
+// Offer schema of API and use this for validate the data from API
 const Offer = Joi.object({
   offers: Joi.array()
     .items(
