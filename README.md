@@ -4,7 +4,7 @@
 - Git
 - Postman
 - PC/Mac/Laptop
-- Node.js
+- Node.js 18.14.0 LTS
 - NPM
 # Deployment
 - Link: https://ascenda-internship-exercise.herokuapp.com
@@ -88,3 +88,7 @@ Ran all test suites.
 
 # Author
 - Name: Nguyen Tuan Anh
+
+# FAQ
+-ERROR : fetch not found:
+Please update nodeJS to the newest version
