@@ -92,3 +92,6 @@ Ran all test suites.
 # FAQ
 -ERROR : fetch not found:
 Please update nodeJS to the newest version
+# Requirement
+https://gist.github.com/DiHuynh35/ec031b99c91f9ad0a2a5631bf7ed3bac/revisions
+
